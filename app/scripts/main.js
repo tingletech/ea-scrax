@@ -1,3 +1,4 @@
+;
 var global_debug = {};
 // magic globals for saxon-ce
 //  array to hold saxon errors
@@ -10,26 +11,19 @@ var onSaxonLoad = function () {
 
   errors = [];
 
-  Saxon.setErrorHandler(handler);
   // Saxon.setLogLevel("FINE");
+  var proc = Saxon.newXSLT20Processor(xslt);
+  Saxon.setErrorHandler(handler);
+  var fragment = proc.transformToFragment(xml, document);
 
-  run = Saxon.run( {
-    stylesheet: xslt,
-    method: 'transformToHTMLFragment',
-    source: xml
-  });
+  // http://stackoverflow.com/a/998325/1763984
+  var d = $("#ead-results")[0].contentWindow.document; // contentWindow works in IE7 and FF
+  d.open(); d.close(); // must open and close document object to start using it!
 
-  // show a window alert listing any compile-time or run-time errors
-  if (errors.length > 0) {
-      // window.alert(errors.toString());
-  } 
+  $("body", d).append(fragment);
 
   function handler(saxonError) {
     errors.push(saxonError.message + " " + saxonError.level + " " + saxonError.time);
   }
-
-  console.log(run.getResultDocuments());
-
-  global_debug = run;
 
 };
