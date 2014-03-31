@@ -1,22 +1,21 @@
+var global_debug = {};
 // magic globals for saxon-ce
 //  array to hold saxon errors
-var errors = new Array();
+var errors = [];
 //  fires when saxon is loaded
 var onSaxonLoad = function () {
 
   var xml = Saxon.requestXML($('#xml').val());
   var xslt = Saxon.requestXML($('#xslt').val());
 
-  console.log(xml);
-  console.log(xslt);
-
-  errors = new Array();
+  errors = [];
 
   Saxon.setErrorHandler(handler);
-  Saxon.setLogLevel("FINE");
+  // Saxon.setLogLevel("FINE");
 
   run = Saxon.run( {
     stylesheet: xslt,
+    method: 'transformToHTMLFragment',
     source: xml
   });
 
@@ -28,5 +27,9 @@ var onSaxonLoad = function () {
   function handler(saxonError) {
     errors.push(saxonError.message + " " + saxonError.level + " " + saxonError.time);
   }
+
+  console.log(run.getResultDocuments());
+
+  global_debug = run;
 
 };
