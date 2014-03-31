@@ -31,3 +31,8 @@ var run_my_transform = function () {
     }
   }
 };
+$(function() {
+  var x = $(".xml_editor").resizable({
+    alsoResize : '#xml'
+  });
+});

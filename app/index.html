@@ -23,15 +23,17 @@
         <script src="bower_components/modernizr/modernizr.js"></script>
         <!-- endbuild -->
 
+        <link rel="stylesheet" href="bower_components/jqueryui/themes/ui-lightness/jquery-ui.min.css" />
+
     </head>
   <body>
-    <div>
+    <div class="xml_editor">
       <iframe 
         id="xml"
         src="editor_frame.html?src=http://socialarchive.iath.virginia.edu/xtf/data/feynman-richard-phillips-1918-1988-cr.xml"
       ></iframe>
     </div>
-    <div>
+    <div class="html_resutls">
       <iframe 
         id="html"
       ></iframe>
@@ -40,6 +42,7 @@
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/jqueryui/ui/jquery-ui.js"></script>
         <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
         <script src="bower_components/codemirror/lib/codemirror.js"></script>
         <script src="bower_components/uri.js/src/URI.js"></script>
