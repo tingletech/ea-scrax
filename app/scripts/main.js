@@ -30,6 +30,7 @@ var run_my_transform = function () {
       return (new DOMParser()).parseFromString(oString, "text/xml");
     }
   }
+  return false;
 };
 $(function() {
   var x = $(".xml_editor").resizable({

@@ -22,10 +22,21 @@
         <script src="bower_components/modernizr/modernizr.js"></script>
         <!-- endbuild -->
 
-<style type="text/css">
+        <style type="text/css">
       .CodeMirror {border-top: 1px solid black; border-bottom: 1px solid black;}
       .CodeMirror-matchingtag { background: rgba(255, 150, 0, .3); }
-    </style>
+      .CodeMirror-scroll {height: 100%; overflow-y: auto; overflow-x: auto;} 
+      body {
+        border:0;
+        padding:0;
+      }
+      iframe {
+        position:absolute;
+        z-index:1;
+        top:0px;
+        left:0px;
+      }
+        </style>
 
     </head>
   <body>
@@ -77,6 +88,10 @@ $(function() {
         matchTags: {bothTags: true},
         autoCloseTags: true
       });
+
+      var browserHeight = document.documentElement.clientHeight; 
+      editor.getWrapperElement().style.height = browserHeight + 'px'; 
+      editor.refresh(); 
     });
 
   // http://stackoverflow.com/a/6507766/1763984

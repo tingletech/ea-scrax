@@ -24,25 +24,43 @@
         <!-- endbuild -->
 
         <link rel="stylesheet" href="bower_components/jqueryui/themes/ui-lightness/jquery-ui.min.css" />
+        <style>
+      body {
+        border:0;
+        padding:0;
+      }
+html, body{
+    height: 100%;
+}
+        </style>
 
     </head>
   <body>
-    <div class="xml_editor">
+    <div class="xml_editor" style="height:45%;"> 
       <iframe 
         id="xml"
         src="editor_frame.html?src=http://socialarchive.iath.virginia.edu/xtf/data/feynman-richard-phillips-1918-1988-cr.xml"
+        width="100%" height="100%;" frameborder="0"
       ></iframe>
     </div>
+    <div><form onsubmit="run_my_transform(); false;">
+      <input type="url" name="xml_url"></input>
+      <input type="submit" name="" value="new xml"></input>
+      <input type="url" name="xslt_url"></input>
+      <input type="submit" name="" value="transform to html"></input>
+      <input type="checkbox" value="HEY">transform on edit</input>
+     </form></div>
     <div class="html_resutls">
       <iframe 
         id="html"
+        width="100%" height="100%;" frameborder="0"
       ></iframe>
+    </div>
     </div>
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <script src="bower_components/jquery/dist/jquery.js"></script>
-        <script src="bower_components/jqueryui/ui/jquery-ui.js"></script>
         <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
         <script src="bower_components/codemirror/lib/codemirror.js"></script>
         <script src="bower_components/uri.js/src/URI.js"></script>
@@ -51,6 +69,7 @@
         <script src="bower_components/uri.js/src/punycode.js"></script>
         <script src="bower_components/uri.js/src/URITemplate.js"></script>
         <script src="bower_components/uri.js/src/jquery.URI.js"></script>
+        <script src="bower_components/jqueryui/ui/jquery-ui.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -83,5 +102,6 @@
         <script src="scripts/main.js"></script>
         <script src="scripts/Saxon-CE_1.1/Saxonce/Saxonce.nocache.js"></script>
         <!-- endbuild -->
+
 </body>
 </html>
