@@ -25,12 +25,19 @@ includes
  * http://codemirror.net
  * see `bower.json` for more
 
-
 ## ideas for features?
 
 Is this a good idea?  Have suggestions or want to help?
 
 https://github.com/tingletech/ea-scrax/issues
+
+# building
+
+```
+grunt test
+grunt build               # check `dist` with python -m SimpleHTTPServer
+grunt buildcontrol:local  # commit `dist` to `gh-pages` branch
+```
 
 # License 
 
