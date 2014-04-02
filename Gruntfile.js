@@ -366,7 +366,7 @@ module.exports = function (grunt) {
             },
             pages: {
               options: {
-                remote: 'git@github.com:tingletech/ea-scrax.git',
+                remote: 'https://github.com/tingletech/ea-scrax.git',
                 branch: 'gh-pages'
               }
             },
