@@ -79,6 +79,7 @@ $(function() {
   global_debug = href;
 
   if ( href.protocol() == 'https' || href.protocol() == 'http' ) {
+    // gunna load me some XML into the text area
     $.get(href.toString(), function( data ) {
       var textarea = $('textarea');
       textarea.val(xmlToString(data));
@@ -88,8 +89,10 @@ $(function() {
         matchTags: {bothTags: true},
         autoCloseTags: true
       });
+      // done loaded that XML
+      parent.xml_editor_loaded.resolve();
 
-      var browserHeight = document.documentElement.clientHeight; 
+      var browserHeight = document.documentElement.clientHeight;
       editor.getWrapperElement().style.height = browserHeight + 'px'; 
       editor.refresh(); 
     });
@@ -107,9 +110,6 @@ $(function() {
     }
   }
 });
-window.onload = function() {
-    // parent.run_my_transform();
-}
   </script>
 </body>
 </html>

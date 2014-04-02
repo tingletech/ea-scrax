@@ -15,7 +15,7 @@ var run_my_transform = function () {
   var fragment = proc.transformToFragment(xml, document);
 
   var d = $("#html")[0].contentWindow.document;
-  $("body", d).append(fragment);
+  $("body", d).html(fragment);
   
   function handler(saxonError) {
     errors.push(saxonError.message + " " + saxonError.level + " " + saxonError.time);
@@ -32,8 +32,14 @@ var run_my_transform = function () {
   }
   return false;
 };
-$(function() {
-  var x = $(".xml_editor").resizable({
-    alsoResize : '#xml'
-  });
+
+// wait for both saxon and the XML editor iframe to load 
+// http://stackoverflow.com/a/14906825/1763984
+var xml_editor_loaded = $.Deferred();
+var saxon_loaded = $.Deferred();
+var onSaxonLoad = function() {
+  saxon_loaded.resolve();
+}
+$.when(xml_editor_loaded, saxon_loaded).done(function(){
+  run_my_transform();
 });
