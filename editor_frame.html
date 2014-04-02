@@ -1,0 +1,58 @@
+<!DOCTYPE html><!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]--><!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]--><!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]--><!--[if gt IE 8]><!--><html class=no-js><!--<![endif]--><head><meta charset=utf-8><title>eadfiddle editor frame</title><meta name=description content=""><meta name=viewport content="width=device-width"><link rel="shortcut icon" href=/6df2b309.favicon.ico><!-- Place favicon.ico and apple-touch-icon.png in the root directory --><link rel=stylesheet href=styles/f9d42937.vendor.css><link rel=stylesheet href=styles/a9a3f201.main.css><script src=scripts/vendor/9dfcc0d3.modernizr.js></script><style type=text/css>.CodeMirror {border-top: 1px solid black; border-bottom: 1px solid black;}
+      .CodeMirror-matchingtag { background: rgba(255, 150, 0, .3); }
+      .CodeMirror-scroll {height: 100%; overflow-y: auto; overflow-x: auto;} 
+      body {
+        border:0;
+        padding:0;
+      }
+      iframe {
+        position:absolute;
+        z-index:1;
+        top:0px;
+        left:0px;
+      }</style><body><textarea></textarea><script src=scripts/111c1d86.vendor.js></script><!-- Google Analytics: change UA-XXXXX-X to be your site's ID. --><!-- script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script --><script>var global_debug;
+$(function() {
+  // parse the `src` href paramater out of the query string
+  var href = URI(URI(window.location.search).search(true).src);
+
+  global_debug = href;
+
+  if ( href.protocol() == 'https' || href.protocol() == 'http' ) {
+    // gunna load me some XML into the text area
+    $.get(href.toString(), function( data ) {
+      var textarea = $('textarea');
+      textarea.val(xmlToString(data));
+      var editor = CodeMirror.fromTextArea( textarea[0], {
+        mode: "xml",
+        lineNumbers: true,
+        matchTags: {bothTags: true},
+        autoCloseTags: true
+      });
+      // done loaded that XML
+      parent.xml_editor_loaded.resolve();
+
+      var browserHeight = document.documentElement.clientHeight;
+      editor.getWrapperElement().style.height = browserHeight + 'px'; 
+      editor.refresh(); 
+    });
+
+  // http://stackoverflow.com/a/6507766/1763984
+    function xmlToString(xmlData) { 
+      var xmlString;
+      //IE
+      if (window.ActiveXObject){ xmlString = xmlData.xml; }
+      // code for Mozilla, Firefox, Opera, etc.
+      else {
+        xmlString = (new XMLSerializer()).serializeToString(xmlData);
+      }
+      return xmlString;
+    }
+  }
+});</script>
