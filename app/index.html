@@ -43,14 +43,14 @@ html, body{
         width="100%" height="100%;" frameborder="0"
       ></iframe>
     </div>
-    <div><form onsubmit="run_my_transform(); false;">
+    <div><form>
       <input type="url" name="xml_url"></input>
       <input type="submit" name="" value="new xml"></input>
       <input type="url" name="xslt_url"></input>
-      <input type="submit" name="" value="transform to html"></input>
+      <button type="button" onclick="run_my_transform();">transform to html</button>
       <input type="checkbox" value="HEY">transform on edit</input>
      </form></div>
-    <div class="html_resutls">
+    <div class="html_results" style="height:45%;">
       <iframe 
         id="html"
         width="100%" height="100%;" frameborder="0"
