@@ -36,7 +36,7 @@ https://github.com/tingletech/ea-scrax/issues
 ```
 grunt test
 grunt build               # check `dist` with python -m SimpleHTTPServer
-grunt buildcontrol:local  # commit `dist` to `gh-pages` branch
+grunt buildcontrol:pages  # commit `dist` to `gh-pages` branch and push to github
 ```
 
 # License 
