@@ -314,7 +314,8 @@ module.exports = function (grunt) {
                         'images/{,*/}*.webp',
                         '{,*/}*.html',
                         'styles/fonts/{,*/}*.*',
-                        'bower_components/bootstrap/fonts/*.*'
+                        'bower_components/bootstrap/fonts/*.*',
+                        'Saxon-CE*/**'
                     ]
                 }]
             },
