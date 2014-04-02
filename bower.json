@@ -6,8 +6,7 @@
     "modernizr": "~2.6.2",
     "jquery": "~1.11.0",
     "codemirror": "~4.0.3",
-    "uri.js": "~1.12.1",
-    "jqueryui": "~1.10.4"
+    "uri.js": "~1.12.1"
   },
   "devDependencies": {}
 }
